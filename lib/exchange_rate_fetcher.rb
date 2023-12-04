@@ -14,20 +14,21 @@ end
 class ExchangeRateFetcher
   def initialize(base_currency)
     @base_currency = base_currency
-    @api_resources = load_rate_resources
+    @rates_resources = load_rate_resources
   end
 
-  attr_reader :base_currency, :api_resources
+  attr_reader :base_currency, :rates_resources
 
   def fetch_exchange_rates
-    uri = URI(String(api_resources[base_currency]['source']))
+    uri = URI(String(rates_resources[base_currency]['source']))
     response = Net::HTTP.get_response(uri)
 
     return nil unless response.is_a?(Net::HTTPSuccess)
 
     begin
       parsed_response = JSON.parse(response.body)
-      parsed_response if parsed_response.key?('rates')
+      parsed_response if
+        parsed_response.key?(rates_resources[base_currency]['data_key'])
     rescue JSON::ParserError => e
       Errors::JsonParsingError.new(code: e.message).log_error
     end
