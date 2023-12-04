@@ -9,3 +9,7 @@
 
 # rspec failure tracking
 .rspec_status
+
+# Ignore files and folders generated from testing.
+coverage/
+.byebug_history

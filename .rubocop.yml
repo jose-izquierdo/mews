@@ -1,13 +1,22 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
+  SuggestExtensions: false
+  NewCops: enable
 
-Style/StringLiterals:
+Metrics/CyclomaticComplexity:
   Enabled: true
-  EnforcedStyle: double_quotes
+  Max: 7
 
-Style/StringLiteralsInInterpolation:
+Metrics/BlockLength:
+  Exclude:
+    - '**/*'
+
+Metrics/MethodLength:
   Enabled: true
-  EnforcedStyle: double_quotes
+  Max: 30
 
-Layout/LineLength:
-  Max: 120
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
