@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cnb.cz/cnbapi/exrates/daily?lang=EN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.cnb.cz
+  response:
+    status:
+      code: 200
+      message: '200'
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 17:33:31 GMT
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preloa                         d
+      X-Frame-Options:
+      - DENY
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"rates":[{"validFor":"2023-12-04","order":233,"country":"Australia","currency":"dollar","amount":1,"currencyCode":"AUD","rate":14.914},{"validFor":"2023-12-04","order":233,"country":"Brazil","currency":"real","amount":1,"currencyCode":"BRL","rate":4.584},{"validFor":"2023-12-04","order":233,"country":"Bulgaria","currency":"lev","amount":1,"currencyCode":"BGN","rate":12.471},{"validFor":"2023-12-04","order":233,"country":"Canada","currency":"dollar","amount":1,"currencyCode":"CAD","rate":16.570},{"validFor":"2023-12-04","order":233,"country":"China","currency":"renminbi","amount":1,"currencyCode":"CNY","rate":3.144},{"validFor":"2023-12-04","order":233,"country":"Denmark","currency":"krone","amount":1,"currencyCode":"DKK","rate":3.271},{"validFor":"2023-12-04","order":233,"country":"EMU","currency":"euro","amount":1,"currencyCode":"EUR","rate":24.390},{"validFor":"2023-12-04","order":233,"country":"Hongkong","currency":"dollar","amount":1,"currencyCode":"HKD","rate":2.872},{"validFor":"2023-12-04","order":233,"country":"Hungary","currency":"forint","amount":100,"currencyCode":"HUF","rate":6.433},{"validFor":"2023-12-04","order":233,"country":"Iceland","currency":"krona","amount":100,"currencyCode":"ISK","rate":16.142},{"validFor":"2023-12-04","order":233,"country":"IMF","currency":"SDR","amount":1,"currencyCode":"XDR","rate":29.899},{"validFor":"2023-12-04","order":233,"country":"India","currency":"rupee","amount":100,"currencyCode":"INR","rate":26.917},{"validFor":"2023-12-04","order":233,"country":"Indonesia","currency":"rupiah","amount":1000,"currencyCode":"IDR","rate":1.452},{"validFor":"2023-12-04","order":233,"country":"Israel","currency":"new
+        shekel","amount":1,"currencyCode":"ILS","rate":6.037},{"validFor":"2023-12-04","order":233,"country":"Japan","currency":"yen","amount":100,"currencyCode":"JPY","rate":15.302},{"validFor":"2023-12-04","order":233,"country":"Malaysia","currency":"ringgit","amount":1,"currencyCode":"MYR","rate":4.818},{"validFor":"2023-12-04","order":233,"country":"Mexico","currency":"peso","amount":1,"currencyCode":"MXN","rate":1.300},{"validFor":"2023-12-04","order":233,"country":"New
+        Zealand","currency":"dollar","amount":1,"currencyCode":"NZD","rate":13.889},{"validFor":"2023-12-04","order":233,"country":"Norway","currency":"krone","amount":1,"currencyCode":"NOK","rate":2.088},{"validFor":"2023-12-04","order":233,"country":"Philippines","currency":"peso","amount":100,"currencyCode":"PHP","rate":40.564},{"validFor":"2023-12-04","order":233,"country":"Poland","currency":"zloty","amount":1,"currencyCode":"PLN","rate":5.626},{"validFor":"2023-12-04","order":233,"country":"Romania","currency":"leu","amount":1,"currencyCode":"RON","rate":4.909},{"validFor":"2023-12-04","order":233,"country":"Singapore","currency":"dollar","amount":1,"currencyCode":"SGD","rate":16.805},{"validFor":"2023-12-04","order":233,"country":"South
+        Africa","currency":"rand","amount":1,"currencyCode":"ZAR","rate":1.198},{"validFor":"2023-12-04","order":233,"country":"South
+        Korea","currency":"won","amount":100,"currencyCode":"KRW","rate":1.721},{"validFor":"2023-12-04","order":233,"country":"Sweden","currency":"krona","amount":1,"currencyCode":"SEK","rate":2.155},{"validFor":"2023-12-04","order":233,"country":"Switzerland","currency":"franc","amount":1,"currencyCode":"CHF","rate":25.732},{"validFor":"2023-12-04","order":233,"country":"Thailand","currency":"baht","amount":100,"currencyCode":"THB","rate":64.131},{"validFor":"2023-12-04","order":233,"country":"Turkey","currency":"lira","amount":1,"currencyCode":"TRY","rate":0.777},{"validFor":"2023-12-04","order":233,"country":"United
+        Kingdom","currency":"pound","amount":1,"currencyCode":"GBP","rate":28.430},{"validFor":"2023-12-04","order":233,"country":"USA","currency":"dollar","amount":1,"currencyCode":"USD","rate":22.442}]}'
+  recorded_at: Mon, 04 Dec 2023 17:33:32 GMT
+recorded_with: VCR 6.2.0
