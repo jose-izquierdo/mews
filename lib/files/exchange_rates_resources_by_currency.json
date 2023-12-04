@@ -1,0 +1,8 @@
+{
+	"CZK": {
+		"source": "https://api.cnb.cz/cnbapi/exrates/daily?lang=EN",
+		"order_key": "currencyCode",
+		"rate_key": "rate",
+		"data_key": "rates"
+	}
+}
