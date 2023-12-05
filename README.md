@@ -1,39 +1,87 @@
+[![Mews CI/CD](https://github.com/jose-izquierdo/mews/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/jose-izquierdo/mews/actions/workflows/main.yml)
+
 # Mews
 
-TODO: Delete this and the text below, and describe your gem
+## Description
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mews`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem provides an easy-to-use interface for obtaining exchange rates between currencies.
+You can integrate it into your application to perform currency conversions effortlessly and efficiently.
+Explore the world of international finance with ease!
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+1. Ensure you have Ruby version 3.2.2 installed on your system.
 
-Install the gem and add to the application's Gemfile by executing:
+2. Add the gem to your Gemfile:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+ruby '3.2.2'
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+source 'https://rubygems.org'
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+gem 'mews', git: 'https://github.com/jose-izquierdo/mews.git'
+```
 
-## Usage
+3. Run `bundle install` to install the gems and its dependencies.
 
-TODO: Write usage instructions here
+## Design Decisions
 
-## Development
+### Classes Overview
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+#### ExchangeRateFetcher
+The `ExchangeRateFetcher` class is responsible for fetching exchange rates from an external source. It retrieves the latest rates and is a critical component for keeping the data up-to-date.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+#### ExchangeRateProvider
+The `ExchangeRateProvider` class manages the logic for providing exchange rates. It utilizes a `Hash` to efficiently store and retrieve rates. Rates are fetched through the `ExchangeRateFetcher`, and the provider maintains a cache to minimize external requests within a 24-hour timeframe.
+
+#### ExchangeRateUpdater
+The `ExchangeRateUpdater` class acts as a coordinator, providing access to different `ExchangeRateProvider` instances based on the base currency. It ensures that each base currency has its own provider to manage and update exchange rates.
+
+### Caching Strategy
+
+The decision to incorporate a caching strategy aims to balance the need for real-time data and the desire to reduce external API calls. Exchange rates are stored in a binary search tree for quick retrieval. If the cache is within a 24-hour window, the precalculated rates are used, optimizing performance.
+
+### Manual Execution
+
+To manually run the script (`scripts/main_script.rb`), you can modify the `currencies` array to retrieve exchange rates for specific currencies. Additionally, you can change the `base_currency` to reflect the desired base currency. The `base_currency` should be valid inside the system. 
+
+```console
+$ ruby scripts/main_script.rb   
+```
+
+## Testing
+```console
+$ bundle exec rspec
+```
+
+## Code Linting
+```console
+$ bundle exec rubocop
+```
+
+## Security Audit
+```console
+$ bundle exec bundler-audit check
+```
+
+## Building the Gem
+
+To build the gem and create a distributable `.gem` file, you can use the `gem build` command. This process compiles your gem and packages it for distribution.
+
+### Prerequisites
+
+Before building the gem, ensure that you have the necessary dependencies installed and your gemspec file (`.gemspec`) correctly configured.
+
+### Build Command
+
+Use the following command in your terminal to initiate the build process:
+
+```console
+$ gem build
+```
 
 ## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mews. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/mews/blob/master/CODE_OF_CONDUCT.md).
+Feel free to contribute to the development of this gem by forking the repository, making your changes, and submitting a pull request.
 
 ## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Mews project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mews/blob/master/CODE_OF_CONDUCT.md).
+This gem is open-source and available under the MIT License.
